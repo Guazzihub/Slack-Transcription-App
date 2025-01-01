@@ -1,9 +1,9 @@
 # Transcription App
 
-This Slack App integrates with Whisper API to transcribe audio files and send the transcription data to a webhook. The bot accepts an audio URL submitted through Slack, processes the file, and sends the transcription with customizable form data to a webhook.
+This Slack App integrates with Whisper API to transcribe audio files and send the transcription data to a webhook. The App accepts an audio URL submitted through Slack, processes the file, and sends the transcription with customizable form data to a webhook.
 
 ## Features
-- Interactive Slack bot.
+- Interactive Slack App.
 - Transcribe audio files using Whisper API.
 - Send data wherever you want using Webhooks.
 - Built using environment variables for security.
@@ -63,7 +63,7 @@ The App will log "⚡️ App is running in socket mode!" when successfully start
 
 ## Usage
 
-1. Mention the Bot in Slack.
+1. Mention the App in Slack.
 2. Interact with the Modal.
 3. Customizable outputs depending on Webhook settings.
 
