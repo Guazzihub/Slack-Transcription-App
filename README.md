@@ -52,12 +52,13 @@ npm start
 
 ## Project Structure
 
+```
 app/
 ├── .env                 # Environment variables
 ├── index.js             # App logic
 ├── manifest.json        # Slack app configuration
 ├── package.json         # Dependencies and scripts
-
+```
 
 ## Contribution
 
