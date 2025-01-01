@@ -23,7 +23,8 @@
         "im:read",
         "mpim:read",
         "reactions:read",
-        "users:read"
+        "users:read",
+        "app_mentions:read"
       ]
     }
   },
