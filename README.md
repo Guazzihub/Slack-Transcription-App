@@ -38,7 +38,7 @@ WEBHOOK_LINK=https://...
 ```
 ### Installation
 
-1. Download the repository.- Install dependencies:
+1. Download the repository.
 
 2. Install dependencies:
 ```bash
