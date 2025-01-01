@@ -1,12 +1,12 @@
 # Transcription App
 
-This Slack App integrates with Whisper API to transcribe audio files and send the transcription data to a webhook. The App accepts an audio URL submitted through Slack, processes the file, and sends the transcription with customizable form data to a webhook.
+This Slack App integrates with Whisper API to transcribe audio files and send the transcription data to a webhook. The App accepts an audio URL submitted through Slack, processes the file, and sends the transcription including customizable form data to a webhook.
 
 ## Features
 - Interactive Slack App.
 - Transcribe audio files using Whisper API.
 - Send data wherever you want using Webhooks.
-- Built using environment variables for security.
+- Built with environment variables for security.
 
 ## Setup and Installation
 
@@ -16,7 +16,7 @@ This Slack App integrates with Whisper API to transcribe audio files and send th
    - Go to your Slack workspace's app management page.
    - Select "Create New App" and choose the "From manifest" option.
    - Paste the contents of `manifest.json` to automatically configure the app.
-- **Whisper API Key**: Obtain your API key from OpenAI.
+- **Whisper API Key**: Get your API key from OpenAI.
 - **Webhook**: Set up a webhook to receive data.
 
 - Create a .env file in the project root with the following content:
@@ -79,4 +79,4 @@ app/
 
 ## Contribution
 
-Contributions are welcome! Feel free to open issues or submit pull requests.
+Contributions are welcome! Feel free to open issues or submit pull requests for improvements
