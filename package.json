@@ -14,5 +14,13 @@
   },
   "engines": {
     "node": ">=14.x"
-  }
+  },
+    "keywords": [
+    "Back-end",
+    "Node.js",
+    "Dotenv",
+    "Slack",
+    "API",
+    "Whisper"
+  ]
 }
