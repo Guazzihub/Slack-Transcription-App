@@ -21,6 +21,7 @@
     "Dotenv",
     "Slack",
     "API",
+    "Webhook",
     "Whisper"
   ]
 }
