@@ -66,7 +66,7 @@ Em seguida, **convide o aplicativo para um canal do Slack** e mencione-o para di
 Se a inicialização for bem-sucedida, o terminal exibirá:
 
 ```
-⚡️ O bot está rodando em modo Socket!
+⚡️ Aplicativo em execução no modo socket!
 ```
 
 ## Uso
