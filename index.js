@@ -4,7 +4,7 @@ const axios = require('axios');
 const FormData = require('form-data');
 const fs = require('fs');
 
-// Initializes Slack app in Socket mode
+// Inicializa o app do Slack em modo Socket
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
   appToken: process.env.SLACK_APP_TOKEN,
@@ -12,7 +12,7 @@ const app = new App({
   socketMode: true
 });
 
-// Respond to a app mention with interactive buttons
+// Responde a uma menção ao app com botões interativos
 app.event('app_mention', async ({ event, say }) => {
   await say({
     blocks: [
@@ -30,7 +30,7 @@ app.event('app_mention', async ({ event, say }) => {
             type: 'button',
             text: {
               type: 'plain_text',
-              text: 'Preencher o formuláriom'
+              text: 'Preencher o formulário'
             },
             action_id: 'form_action'
           }
@@ -40,13 +40,13 @@ app.event('app_mention', async ({ event, say }) => {
   });
 });
 
-// Form handler
+// Manipulador do formulário
 app.action('form_action', async ({ ack, body, client }) => {
   await ack();
   openModal(client, body.trigger_id);
 });
 
-// Open the modal
+// Abre o modal
 async function openModal(client, trigger_id) {
   try {
     await client.views.open({
@@ -56,7 +56,7 @@ async function openModal(client, trigger_id) {
         callback_id: 'submit_form_modal',
         title: {
           type: 'plain_text',
-          text: 'Preencha os detalhess'
+          text: 'Preencha os detalhes'
         },
         blocks: [
           {
@@ -92,7 +92,7 @@ async function openModal(client, trigger_id) {
             },
             label: {
               type: 'plain_text',
-              text: 'Link do Áudio'
+              text: 'Link do áudio'
             }
           }
         ],
@@ -107,7 +107,7 @@ async function openModal(client, trigger_id) {
   }
 }
 
-// Handler for modal submission
+// Manipulador do envio do modal
 app.view('submit_form_modal', async ({ ack, body, view, client }) => {
   await ack();
 
@@ -116,8 +116,8 @@ app.view('submit_form_modal', async ({ ack, body, view, client }) => {
   const audioLink = view.state.values.audio_link_block.audio_link_action.value;
 
   try {
-    // Download the audio file
-    const audioFilePath = 'audio.mp3'; // Define the path where the audio file will be saved
+    // Faz o download do arquivo de áudio
+    const audioFilePath = 'audio.mp3'; // Caminho onde o arquivo de áudio será salvo
     const audioResponse = await axios({
       method: 'GET',
       url: audioLink,
@@ -129,7 +129,7 @@ app.view('submit_form_modal', async ({ ack, body, view, client }) => {
 
     writer.on('finish', async () => {
       try {
-        // Sends the audio to Whisper API
+        // Envia o áudio para a API Whisper
         const form = new FormData();
         form.append('file', fs.createReadStream(audioFilePath));
         form.append('model', 'whisper-1');
@@ -139,20 +139,20 @@ app.view('submit_form_modal', async ({ ack, body, view, client }) => {
             'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
             'Content-Type': `multipart/form-data; boundary=${form._boundary}`
           },
-          timeout: 300000 // 300 seconds timeout
+          timeout: 300000 // 300 segundos de timeout
         });
 
         const transcription = whisperResponse.data.text;
 
         const webhookLink = process.env.WEBHOOK_LINK;
 
-      // Sends data and transcription to Webhook.
+        // Envia dados e transcrição para o Webhook
         await axios.post(webhookLink, {
           field1,
           field2,
           audioLink,
           transcription
-      });
+        });
 
         await client.chat.postMessage({
           channel: body.user.id,
@@ -162,13 +162,17 @@ app.view('submit_form_modal', async ({ ack, body, view, client }) => {
         console.error('Erro ao transcrever o áudio:', error);
       }
     });
+
+    writer.on('error', (error) => {
+      console.error('Erro ao salvar o arquivo de áudio:', error);
+    });
   } catch (error) {
     console.error('Erro no download do arquivo de áudio:', error);
   }
 });
 
-// Starts app in Socket mode
+// Inicia o app em modo Socket
 (async () => {
   await app.start();
-  console.log('⚡️ O bot está rodando em modo Socket!');
+  console.log('⚡️ Aplicativo em execução no modo socket!');
 })();
