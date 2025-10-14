@@ -20,7 +20,7 @@ app.event('app_mention', async ({ event, say }) => {
         type: 'section',
         text: {
           type: 'mrkdwn',
-          text: 'Hello! Please click the button below to fill out the form:'
+          text: 'Olá! Clique no botão abaixo para abrir o formulário de preenchimento:'
         }
       },
       {
@@ -30,7 +30,7 @@ app.event('app_mention', async ({ event, say }) => {
             type: 'button',
             text: {
               type: 'plain_text',
-              text: 'Fill Out Form'
+              text: 'Preencher o formuláriom'
             },
             action_id: 'form_action'
           }
@@ -56,7 +56,7 @@ async function openModal(client, trigger_id) {
         callback_id: 'submit_form_modal',
         title: {
           type: 'plain_text',
-          text: 'Fill in the details'
+          text: 'Preencha os detalhess'
         },
         blocks: [
           {
@@ -68,7 +68,7 @@ async function openModal(client, trigger_id) {
             },
             label: {
               type: 'plain_text',
-              text: 'Field 1' // Customizable field, e.g., "Company Name"
+              text: 'Campo 1' // Campo customizado Exemplo: "Nome da empresa"
             }
           },
           {
@@ -80,7 +80,7 @@ async function openModal(client, trigger_id) {
             },
             label: {
               type: 'plain_text',
-              text: 'Field 2' // Customizable field, e.g., "Company Phone"
+              text: 'Campo 2' // Campo customizado Exemplo: "Nome da empresa"
             }
           },
           {
@@ -92,18 +92,18 @@ async function openModal(client, trigger_id) {
             },
             label: {
               type: 'plain_text',
-              text: 'Audio File Link'
+              text: 'Link do Áudio'
             }
           }
         ],
         submit: {
           type: 'plain_text',
-          text: 'Submit'
+          text: 'Enviar'
         }
       }
     });
   } catch (error) {
-    console.error('Error opening the modal:', error);
+    console.error('Erro ao abrir o modal:', error);
   }
 }
 
@@ -156,19 +156,19 @@ app.view('submit_form_modal', async ({ ack, body, view, client }) => {
 
         await client.chat.postMessage({
           channel: body.user.id,
-          text: 'The data has been successfully sent!'
+          text: 'Dados enviados com sucesso!'
         });
       } catch (error) {
-        console.error('Error transcribing audio or sending data:', error);
+        console.error('Erro ao transcrever o áudio:', error);
       }
     });
   } catch (error) {
-    console.error('Error downloading the audio file:', error);
+    console.error('Erro no download do arquivo de áudio:', error);
   }
 });
 
 // Starts app in Socket mode
 (async () => {
   await app.start();
-  console.log('⚡️ Bot is running in socket mode!');
+  console.log('⚡️ O bot está rodando em modo Socket!');
 })();
