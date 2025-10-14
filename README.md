@@ -66,7 +66,7 @@ Em seguida, **convide o aplicativo para um canal do Slack** e mencione-o para di
 Se a inicialização for bem-sucedida, o terminal exibirá:
 
 ```
-⚡️ App is running in socket mode!
+⚡️ O bot está rodando em modo Socket!
 ```
 
 ## Uso
@@ -75,7 +75,7 @@ Se a inicialização for bem-sucedida, o terminal exibirá:
 2. Interaja com o **modal** exibido.  
 3. Os resultados podem ser personalizados de acordo com as configurações do webhook.
 
-## 🗂 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 app/
