@@ -1,82 +1,90 @@
-# Transcription App
+# Aplicativo de Transcrição
 
-This Slack App integrates with Whisper API to transcribe audio files and send the transcription data to a webhook. The App accepts an audio URL submitted through Slack, processes the file, and sends the transcription including customizable form data to a webhook.
+Este aplicativo para **Slack** integra-se à **API Whisper** para transcrever arquivos de áudio e enviar os dados da transcrição para um **webhook**. A aplicação aceita uma **URL de áudio** enviada pelo Slack, processa o arquivo e envia a transcrição junto com dados personalizados de formulário para o webhook configurado.
 
-## Features
-- Interactive Slack App.
-- Transcribe audio files using Whisper API.
-- Send data wherever you want using Webhooks.
-- Built with environment variables for security.
+## Funcionalidades
 
-## Setup and Installation
+- Aplicativo interativo para Slack.  
+- Transcrição de arquivos de áudio utilizando a **Whisper API**.  
+- Envio dos dados transcritos para qualquer destino via **Webhooks**.  
+- Configuração segura através de **variáveis de ambiente**.
 
-### Prerequisites
-- **Node.js**: Ensure you have Node.js >= 14.x installed.
-- **Slack App:** You can create the Slack app using the provided `manifest.json` file:
-   - Go to your Slack workspace's app management page.
-   - Select "Create New App" and choose the "From manifest" option.
-   - Paste the contents of `manifest.json` to automatically configure the app.
-- **Whisper API Key**: Get your API key from OpenAI.
-- **Webhook**: Set up a webhook to receive data.
+## Configuração e Instalação
 
-- Create a .env file in the project root with the following content:
+### Pré-requisitos
+
+- **Node.js**: Certifique-se de ter o Node.js **>= 14.x** instalado.  
+- **Aplicativo Slack:** Você pode criar o app utilizando o arquivo `manifest.json` fornecido:
+  1. Acesse a página de gerenciamento de apps do seu workspace Slack.  
+  2. Selecione **“Create New App”** e escolha a opção **“From manifest”**.  
+  3. Cole o conteúdo de `manifest.json` para configurar automaticamente o app.  
+- **Chave da API Whisper (OpenAI)** — obtenha sua chave em [https://platform.openai.com/](https://platform.openai.com/).  
+- **Webhook:** configure um endpoint para receber os dados da transcrição.
+
+Crie um arquivo `.env` na raiz do projeto com o seguinte conteúdo:
+
 ```bash
-# Slack Bot Token (Bot user OAuth Token)
+# Token do Bot do Slack (Bot user OAuth Token)
 SLACK_BOT_TOKEN=xoxb-...
 
-# Slack App Token (Socket mode)
+# Token do App do Slack (Socket Mode)
 SLACK_APP_TOKEN=xapp-...
 
 # Slack Signing Secret
 SLACK_SIGNING_SECRET=...
 
-# OpenAI API Key
+# Chave da API OpenAI
 OPENAI_API_KEY=sk-proj-...
 
-# Zapier Webhook Link
+# Link do Webhook (ex: Zapier, n8n, etc.)
 WEBHOOK_LINK=https://...
 ```
-### Installation
 
-1. Download the repository.
+### Instalação
 
-2. Install dependencies:
+1. Faça o download do repositório.  
+2. Instale as dependências:
+
 ```bash
 npm install
- ```
+```
 
-### Running the app
+### Executando o aplicativo
 
-Start the app in Socket Mode:
+Inicie o app no modo **Socket Mode**:
 
 ```bash
 node index.js
 ```
 
-Invite the app to a Slack channel and mention it to trigger the app:
+Em seguida, **convide o aplicativo para um canal do Slack** e mencione-o para disparar a interação:
 
 ```bash
-@your-app-name
+@nome-do-seu-app
 ```
 
-The App will log "⚡️ App is running in socket mode!" when successfully started.
+Se a inicialização for bem-sucedida, o terminal exibirá:
 
-## Usage
+```
+⚡️ App is running in socket mode!
+```
 
-1. Mention the App in Slack.
-2. Interact with the Modal.
-3. Customizable outputs depending on Webhook settings.
+## Uso
 
-## Project Structure
+1. Mencione o aplicativo em um canal do Slack.  
+2. Interaja com o **modal** exibido.  
+3. Os resultados podem ser personalizados de acordo com as configurações do webhook.
+
+## 🗂 Estrutura do Projeto
 
 ```
 app/
-├── .env                 # Environment variables
-├── index.js             # App logic
-├── manifest.json        # Slack app configuration
-├── package.json         # Dependencies and scripts
+├── .env                 # Variáveis de ambiente
+├── index.js             # Lógica principal da aplicação
+├── manifest.json        # Configuração do app Slack
+├── package.json         # Dependências e scripts
 ```
 
-## Contribution
+## Contribuição
 
-Contributions are welcome! Feel free to open issues or submit pull requests for improvements
+Contribuições são bem-vindas! Sinta-se à vontade para abrir **issues** ou enviar **pull requests** com melhorias e novas funcionalidades.
