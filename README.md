@@ -1,3 +1,5 @@
+# [Clique aqui para ver a versão em Português](https://github.com/Guazzihub/Slack-Transcription-App/tree/Portugu%C3%AAs)
+
 # Transcription App
 
 This Slack App integrates with Whisper API to transcribe audio files and send the transcription data to a webhook. The App accepts an audio URL submitted through Slack, processes the file, and sends the transcription including customizable form data to a webhook.
