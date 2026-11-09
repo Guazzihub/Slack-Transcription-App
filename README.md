@@ -4,6 +4,18 @@
 
 This Slack App integrates with Whisper API to transcribe audio files and send the transcription data to a webhook. The App accepts an audio URL submitted through Slack, processes the file, and sends the transcription including customizable form data to a webhook.
 
+## Context
+
+I built this bot for a sales team that needed faster call qualification. A sales rep posts the call recording in Slack, the bot transcribes it with Whisper and sends the transcript to a webhook. In production, that webhook fed a Make scenario that used an LLM to produce a BANT analysis (summary, objections, scores and sales signals) and returned a DOCX to the rep.
+
+Result: 20 to 30 minute calls analyzed in under five minutes, at least five analyses per day.
+
+```
+Slack -> Node.js (Bolt, Axios) -> Whisper API -> webhook -> Make + LLM -> BANT report (DOCX)
+```
+
+This repository contains the Slack bot only. The Make scenario is not published, and no client data is included.
+
 ## Features
 - Interactive Slack App.
 - Transcribe audio files using Whisper API.
